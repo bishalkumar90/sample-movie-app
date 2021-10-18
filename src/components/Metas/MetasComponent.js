@@ -16,7 +16,7 @@ const MetasComponent = ({ movie = {}, windowWidth = 0 }) => {
   const renderListMeta = useCallback(
     (curMovie, windowW) => {
       return (
-        <div className="px-2 meta-content d-flex">
+        <div className="row">
           {Object.keys(curMovie).map((key) => {
             const value = movie[key];
             if (IGNORE_PROPS.includes(key) || value === "N/A") {
@@ -26,7 +26,7 @@ const MetasComponent = ({ movie = {}, windowWidth = 0 }) => {
               return null;
             }
             return (
-              <div key={key} className="text-start meta-item">
+              <div key={key} className="col-4 col-lg-6 text-start">
                 <p>
                   <b>{key}:</b> {value}
                 </p>
@@ -44,30 +44,32 @@ const MetasComponent = ({ movie = {}, windowWidth = 0 }) => {
   }
 
   return (
-    <div className="w-100">
+    <div className="w-100 px-2">
       <div className="mb-3 w-100 lg-title">
         <h1>{movie.Title || "Title"}</h1>
         <div className="w-100 lg-meta-content">
-          {FIRST_PROPS.map((key) => {
+          {Object.keys(movie).map((key) => {
             const value = movie[key];
             if (value === "N/A") {
               return null;
             }
-            return (
-              <div key={key} className="text-start">
-                <p>
-                  <b>{key}:</b> {value}
-                </p>
-              </div>
-            );
+            if (FIRST_PROPS.includes(key)) {
+              return (
+                <div key={key} className="text-start">
+                  <p>
+                    <b>{key}:</b> {value}
+                  </p>
+                </div>
+              );
+            }
           })}
         </div>
       </div>
-      <div className="w-100 py-3 meta-container">
+      <div className="w-100 py-3 meta-container d-flex justify-content-between align-items-center">
         <div className="h-100 d-flex justify-content-center align-items-center ">
           <img src={movie.Poster || ""} alt="Movie Poster" />
         </div>
-        <div className="h-100">
+        <div className="h-100 px-1">
           <h1 className="title">{movie.Title || "Title"}</h1>
           {renderListMeta(movie, windowWidth)}
         </div>
