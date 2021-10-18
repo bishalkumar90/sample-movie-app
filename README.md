@@ -5,14 +5,12 @@
 #### Navigate into the project directory
 
 ```
-shell
 cd sample-movie-app
 ```
 
 #### Install dependencies
 
 ```
-shell
 yarn
 ```
 
@@ -23,7 +21,6 @@ yarn
 #### you can run:
 
 ```
-shell
 yarn start
 ```
 
@@ -34,21 +31,18 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.
 
 ```
-shell
 yarn stest
 ```
 
 Launches the test runner.
 
 ```
-shell
 yarn wtest
 ```
 
 Launches the test runner in the interactive watch mode.
 
 ```
-shell
 yarn build
 ```
 
