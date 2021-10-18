@@ -74,6 +74,10 @@ body {
   margin-right: 8.5rem;
 }
 
+.carousel-container {
+  padding-top: 1.3rem !important;
+}
+
 @media only screen and (max-width: 1400px) {
   .carousel-select {
     width: 100% !important;
@@ -120,6 +124,9 @@ body {
         padding-left: 0.3rem !important;
       }
     }
+  }
+  .carousel-container {
+    padding-top: 0 !important;
   }
 }
 @media only screen and (min-width: 1401px) {

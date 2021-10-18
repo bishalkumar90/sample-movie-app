@@ -51,7 +51,7 @@ const CarouselComponent = ({
   };
 
   return (
-    <div className="py-3 w-100">
+    <div className="pb-3 w-100 carousel-container">
       <div className="w-100 mr-3 d-flex justify-content-end">
         <Form.Select
           onChange={handleChangeGenre}

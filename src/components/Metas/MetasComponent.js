@@ -45,7 +45,7 @@ const MetasComponent = ({ movie = {}, windowWidth = 0 }) => {
 
   return (
     <div className="w-100 mt-3 px-2">
-      <div className="mb-3 w-100 lg-title">
+      <div className="w-100 lg-title">
         <h1>{movie.Title || "Title"}</h1>
         <div className="w-100 lg-meta-content">
           {Object.keys(movie).map((key) => {
@@ -70,7 +70,7 @@ const MetasComponent = ({ movie = {}, windowWidth = 0 }) => {
           <img src={movie.Poster || ""} alt="Movie Poster" />
         </div>
         <div className="h-100 px-1">
-          <h1 className="title">{movie.Title || "Title"}</h1>
+          <h1 className="mb-4 title">{movie.Title || "Title"}</h1>
           {renderListMeta(movie, windowWidth)}
         </div>
       </div>
