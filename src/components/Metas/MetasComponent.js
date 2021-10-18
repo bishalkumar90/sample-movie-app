@@ -22,11 +22,11 @@ const MetasComponent = ({ movie = {}, windowWidth = 0 }) => {
             if (IGNORE_PROPS.includes(key) || value === "N/A") {
               return null;
             }
-            if (FIRST_PROPS.includes(key) && windowW <= 992) {
+            if (FIRST_PROPS.includes(key) && windowW <= 1400) {
               return null;
             }
             return (
-              <div key={key} className="col-4 col-lg-6 text-start">
+              <div key={key} className="col-12 col-xxl-6 col-lg-12 text-start">
                 <p>
                   <b>{key}:</b> {value}
                 </p>
@@ -44,7 +44,7 @@ const MetasComponent = ({ movie = {}, windowWidth = 0 }) => {
   }
 
   return (
-    <div className="w-100 px-2">
+    <div className="w-100 mt-3 px-2">
       <div className="mb-3 w-100 lg-title">
         <h1>{movie.Title || "Title"}</h1>
         <div className="w-100 lg-meta-content">
@@ -65,7 +65,7 @@ const MetasComponent = ({ movie = {}, windowWidth = 0 }) => {
           })}
         </div>
       </div>
-      <div className="w-100 py-3 meta-container d-flex justify-content-between align-items-center">
+      <div className="w-100 meta-container d-flex justify-content-between align-items-center">
         <div className="h-100 d-flex justify-content-center align-items-center ">
           <img src={movie.Poster || ""} alt="Movie Poster" />
         </div>

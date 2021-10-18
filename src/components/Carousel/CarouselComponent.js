@@ -67,14 +67,14 @@ const CarouselComponent = ({
       </div>
       <div className="mt-4 w-100 d-flex flex-row justity-content-center align-items-center">
         <div>
-          <PrevArrow className="mx-3" onClick={onPrevClick} />
+          <PrevArrow className="carousel-arrow mx-3" onClick={onPrevClick} />
         </div>
         <div ref={carouselRef} className="carousel">
           {renderPoster()}
         </div>
         {/* </Slider> */}
         <div>
-          <NextArrow className="mx-3" onClick={onNextClick} />
+          <NextArrow className="carousel-arrow mx-3" onClick={onNextClick} />
         </div>
       </div>
     </div>

@@ -4,7 +4,6 @@ import CarouselComponent from "../components/Carousel/CarouselComponent";
 
 import { getMovies } from "../utils/api";
 
-import "./App.module.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -69,11 +68,13 @@ function App() {
 
   if (errorLoading) {
     return (
-      <h1>There is an error when we trying to fetch data. Please try again.</h1>
+      <h1 className="error position-absolute top-50">
+        There is an error when we trying to fetch data. Please try again.
+      </h1>
     );
   }
   if (loading) {
-    return <h1>Loading</h1>;
+    return <h1 className="loader position-absolute top-50">Loading</h1>;
   }
 
   return (

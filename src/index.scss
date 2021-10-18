@@ -74,7 +74,7 @@ body {
   margin-right: 8.5rem;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1400px) {
   .carousel-select {
     width: 100% !important;
     margin-left: 3.5rem;
@@ -98,6 +98,16 @@ body {
   }
 }
 
+.carousel-arrow {
+  cursor: pointer;
+}
+
+.loader,
+.error {
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 @media only screen and (max-width: 768px) {
   .meta-container {
     padding: 0;
@@ -112,7 +122,7 @@ body {
     }
   }
 }
-@media only screen and (min-width: 993px) {
+@media only screen and (min-width: 1401px) {
   .meta-content {
     div {
       width: 50% !important;
