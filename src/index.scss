@@ -32,8 +32,45 @@ body {
     }
   }
 }
+.border-5 {
+  border-width: 5px !important;
+}
+.poster {
+  object-fit: cover;
+  height: 444px !important;
+  width: 300px !important;
+}
+
+.carousel {
+  width: 90% !important;
+  display: grid;
+  // flex-direction: row;
+  grid-template-columns: repeat(5, auto [col-start]);
+  grid-template-rows: 100%;
+  grid-auto-flow: column;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-select {
+  width: 25% !important;
+  margin-right: 8.5rem;
+}
 
 @media only screen and (max-width: 992px) {
+  .carousel-select {
+    width: 100% !important;
+    margin-left: 3.5rem;
+    margin-right: 3.5rem;
+  }
   .title {
     display: none;
   }

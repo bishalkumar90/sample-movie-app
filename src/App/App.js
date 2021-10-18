@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useCallback } from "react";
 import MetasComponent from "../components/Metas/MetasComponent";
+import CarouselComponent from "../components/Carousel/CarouselComponent";
 
 import { getMovies } from "../utils/api";
 
+import "./App.module.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
+  const [genres, setGenres] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState({ index: 0, id: "" });
+  const [selectedGenre, setSelectedGenre] = useState("All");
   const [errorLoading, setErrorLoading] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -28,6 +32,7 @@ function App() {
     getMovies()
       .then((data) => {
         setMovies(data.movies);
+        setGenres([...data.genres]);
         setSelectedMovie({ index: 0, id: data.movies.Id });
         setLoading(false);
       })
@@ -36,6 +41,31 @@ function App() {
         setErrorLoading(true);
       });
   }, []);
+
+  const onChangeGenre = useCallback(
+    (nextGenre) => {
+      setSelectedGenre(nextGenre);
+    },
+    [setSelectedGenre]
+  );
+  const onSelectMovie = useCallback(
+    (nextMovie) => {
+      const index = movies.findIndex((item) => item.Id === nextMovie);
+      if (index > -1) {
+        setSelectedMovie({ index, id: movies[index].Id });
+      }
+    },
+    [movies]
+  );
+  const listDisplayMovie = useMemo(() => {
+    if (selectedGenre === "All") {
+      return movies;
+    }
+    const result = movies.filter((movie) =>
+      movie.Genre.includes(selectedGenre)
+    );
+    return result;
+  }, [movies, selectedGenre]);
 
   if (errorLoading) {
     return (
@@ -51,6 +81,14 @@ function App() {
       <MetasComponent
         movie={movies[selectedMovie.index]}
         windowWidth={windowWidth}
+      />
+      <CarouselComponent
+        windowWidth={windowWidth}
+        movies={listDisplayMovie}
+        genres={genres}
+        selectedMovie={selectedMovie}
+        onChangeGenre={onChangeGenre}
+        onMovieClick={onSelectMovie}
       />
     </div>
   );
