@@ -6,7 +6,7 @@ const plugins = [];
 
 const rules = [
   {
-    test: /\.s[ac]ss$/i, // sass/scss
+    test: /\.s[ac]ss$|\.css$/i, // sass/scss
     use: [
       // Will create style tag inside the html file
       "style-loader",
@@ -16,21 +16,32 @@ const rules = [
       "sass-loader",
     ],
   },
+  {
+    test: /\.(png|jp(e*)g|svg|gif)$/,
+    use: [
+      {
+        loader: "file-loader",
+        options: {
+          name: "images/[hash]-[name].[ext]",
+        },
+      },
+    ],
+  },
 ];
 
-module.exports = require('./webpack.base.config')({
-  mode: 'development',
+module.exports = require("./webpack.base.config")({
+  mode: "development",
   output: {
-    filename: 'bundle.[hash].js'
+    filename: "bundle.[hash].js",
   },
-  devtool: 'inline-source-map',
+  devtool: "inline-source-map",
   devServer: {
     port: port,
-    hot:true,
+    hot: true,
     historyApiFallback: true,
     open: true,
     static: {
-      directory: path.resolve(__dirname, './dist'),
+      directory: path.resolve(__dirname, "./dist"),
     },
   },
   resolve: {
@@ -38,8 +49,8 @@ module.exports = require('./webpack.base.config')({
       "react-dom": "@hot-loader/react-dom",
     },
   },
-  module:{
-    rules
+  module: {
+    rules,
   },
   plugins,
 });

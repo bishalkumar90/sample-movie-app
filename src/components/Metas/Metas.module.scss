@@ -1,22 +1,4 @@
-@import "~bootstrap/scss/bootstrap";
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  height: 100vh;
-  width: 100vw;
-  text-align: center;
-}
-
-#root {
-  height: 100%;
-}
-
-.meta-container {
+meta-container {
   display: grid;
   grid-template-columns: 30% 70%;
   grid-template-rows: 100%;
@@ -31,6 +13,9 @@ body {
       word-wrap: break-word;
     }
   }
+}
+.border-5 {
+  border-width: 5px !important;
 }
 
 @media only screen and (max-width: 992px) {
@@ -48,7 +33,7 @@ body {
   }
   .lg-meta-content {
     padding-right: 2rem !important;
-    padding-left: 6rem !important;
+    padding-left: 5rem !important;
   }
 }
 

@@ -1,5 +1,5 @@
-const path = require('path');
-const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const path = require("path");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const port = process.env.PORT || 3000;
@@ -7,13 +7,13 @@ const port = process.env.PORT || 3000;
 const plugins = [
   new CleanWebpackPlugin(),
   new MiniCssExtractPlugin({
-    filename: 'styles/styles.[hash].css'
+    filename: "styles/styles.[hash].css",
   }),
 ];
 
 const rules = [
   {
-    test: /\.s[ac]ss$/i, // sass/scss
+    test: /\.s[ac]ss$|\.css$/i, // sass/scss
     use: [
       // Extract css to a separate file rather than inlining it
       MiniCssExtractPlugin.loader,
@@ -23,42 +23,53 @@ const rules = [
       "sass-loader",
     ],
   },
+  {
+    test: /\.(png|jp(e*)g|svg|gif)$/,
+    use: [
+      {
+        loader: "file-loader",
+        options: {
+          name: "images/[hash]-[name].[ext]",
+        },
+      },
+    ],
+  },
 ];
 
-module.exports = require('./webpack.base.config')({
-  mode: 'production',
+module.exports = require("./webpack.base.config")({
+  mode: "production",
   output: {
     path: path.resolve(path.join(process.cwd(), "dist")),
     filename: "bundle.[fullhash].js",
-    publicPath: "/"
+    publicPath: "/",
   },
   resolve: {},
   devServer: {
     port: port,
     static: {
-      directory: path.resolve(__dirname, './dist'),
+      directory: path.resolve(__dirname, "./dist"),
     },
   },
-  module:{
-    rules
+  module: {
+    rules,
   },
   optimization: {
     splitChunks: {
       cacheGroups: {
         styles: {
-          name: 'styles',
+          name: "styles",
           test: /\.css$/,
-          chunks: 'all',
-          enforce: true
+          chunks: "all",
+          enforce: true,
         },
         vendor: {
-          chunks: 'initial',
-          test: 'vendor',
-          name: 'vendor',
-          enforce: true
-        }
-      }
-    }
+          chunks: "initial",
+          test: "vendor",
+          name: "vendor",
+          enforce: true,
+        },
+      },
+    },
   },
   plugins,
 });
