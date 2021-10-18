@@ -44,7 +44,7 @@ const MetasComponent = ({ movie = {}, windowWidth = 0 }) => {
   }
 
   return (
-    <div className="w-100 mt-3 px-2">
+    <section className="w-100 mt-3 px-2">
       <div className="w-100 lg-title">
         <h1>{movie.Title || "Title"}</h1>
         <div className="w-100 lg-meta-content">
@@ -74,7 +74,7 @@ const MetasComponent = ({ movie = {}, windowWidth = 0 }) => {
           {renderListMeta(movie, windowWidth)}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

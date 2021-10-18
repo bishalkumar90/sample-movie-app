@@ -78,7 +78,7 @@ function App() {
   }
 
   return (
-    <div className="App container-fluid">
+    <main className="App container-fluid">
       <MetasComponent
         movie={movies[selectedMovie.index]}
         windowWidth={windowWidth}
@@ -91,7 +91,7 @@ function App() {
         onChangeGenre={onChangeGenre}
         onMovieClick={onSelectMovie}
       />
-    </div>
+    </main>
   );
 }
 

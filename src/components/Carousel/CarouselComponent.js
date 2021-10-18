@@ -51,7 +51,7 @@ const CarouselComponent = ({
   };
 
   return (
-    <div className="pb-3 w-100 carousel-container">
+    <section className="pb-3 w-100 carousel-container">
       <div className="w-100 mr-3 d-flex justify-content-end">
         <Form.Select
           onChange={handleChangeGenre}
@@ -77,7 +77,7 @@ const CarouselComponent = ({
           <NextArrow className="carousel-arrow mx-3" onClick={onNextClick} />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
