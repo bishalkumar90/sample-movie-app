@@ -120,8 +120,8 @@ body {
     }
     div:nth-child(2) {
       div {
-        padding-right: 0.3rem !important;
-        padding-left: 0.3rem !important;
+        padding-right: 0rem !important;
+        padding-left: 0rem !important;
       }
     }
   }
@@ -141,5 +141,15 @@ body {
   .lg-title {
     display: none;
     padding: 0;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .meta-container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .lg-meta-content {
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important;
   }
 }
